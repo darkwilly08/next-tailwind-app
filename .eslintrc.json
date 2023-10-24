@@ -1,0 +1,57 @@
+{
+  "extends": [
+    "next/core-web-vitals",
+    "airbnb",
+    "airbnb-typescript",
+    "plugin:react/jsx-runtime",
+    "prettier"
+  ],
+  "plugins": ["testing-library"],
+  "overrides": [
+    // Only uses Testing Library lint rules in test files
+    {
+      "files": ["tests/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
+      "extends": ["plugin:testing-library/react"]
+    }
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "import/prefer-default-export": "off",
+    "no-restricted-imports": [
+      "error",
+      {
+        "name": "@testing-library/react",
+        "message": "Please use these types from @tests/utils."
+      }
+    ],
+    "capitalized-comments": [
+      "error",
+      "always",
+      {
+        "ignorePattern": "i18n",
+        "ignoreConsecutiveComments": true
+      }
+    ],
+    "spaced-comment": [
+      "error",
+      "always",
+      {
+        "line": {
+          "markers": ["/"],
+          "exceptions": ["-", "+"]
+        },
+        "block": {
+          "markers": ["!"],
+          "exceptions": ["*"],
+          "balanced": true
+        }
+      }
+    ],
+    "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }]
+  }
+}
